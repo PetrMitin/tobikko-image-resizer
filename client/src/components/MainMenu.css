@@ -1,0 +1,23 @@
+select {
+    width: 20%;
+    min-width: 150px;
+}
+
+#submit-button {
+    background-color: darkgrey;
+    color: white;
+    height: 62px;
+    width: 50%;
+    margin-top: 3%;
+    border-radius: 5px;
+    min-width: 200px;
+    font-size: x-large;
+}
+
+#submit-button:hover {
+    background-color: grey;
+}
+
+#submit-button:disabled {
+    background-color: lightgray;
+}
