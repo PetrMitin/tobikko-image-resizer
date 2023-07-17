@@ -37,7 +37,18 @@ class ImageService {
         return sharpInstance.toFormat(extension)
     }
 
-    resizeAndZip = async (width, height, extension) => {
+    resizeUserImages = async (images, width, height, extension) => {
+        const zip = new JSZip();
+        await Promise.all(images.map(async image => {
+            const resizedImage = await this.resizeImage(image.buffer, width, height, extension)
+            const filename = image.originalname.split('.')[0]
+            zip.file(`${filename}-resized.${extension}`, await resizedImage.toBuffer())
+        }))
+        const zipBuffer = await zip.generateAsync({type: 'nodebuffer'})
+        return zipBuffer
+    }
+
+    resizeServerImages = async (width, height, extension) => {
         const itemData = await this.getAllItemData()
         const zip = new JSZip();
         await Promise.all(itemData.map(async item => {
