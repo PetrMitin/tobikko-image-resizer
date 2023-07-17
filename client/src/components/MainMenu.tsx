@@ -49,7 +49,7 @@ const MainMenu: FC = () => {
             <label>
                 <h3>Выберите изображения с вашего компьютера</h3>
                 <p>Если вы хотите изменить размеры изображений из БД tobikko-sushi.ru, оставьте это поле пустым</p>
-                <input type='file' onChange={handleFilesChange} multiple />
+                <input type='file' onChange={handleFilesChange} accept='image/*' multiple />
             </label>
             <label>
                 <h3>Ширина изображения, px</h3>
